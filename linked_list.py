@@ -42,14 +42,29 @@ class LinkedList:
         self.head = self.head.next
         return removed_data
     
+    def remove_at_end(self):
+        if not self.head:
+            return None
+        if not self.head.next:
+            removed_data = self.head.data
+            self.head = None
+            return removed_data
+        temporary_node = self.head
+        while temporary_node.next.next:
+            temporary_node = temporary_node.next
+        removed_data = temporary_node.next.data
+        temporary_node.next = None
+        return removed_data
 
 sushi_preparation = LinkedList()
 sushi_preparation.insert_at_end("prepare")
 sushi_preparation.insert_at_end("roll")
+sushi_preparation.insert_at_end("serve")
 sushi_preparation.insert_at_beginning("assemble")
 sushi_preparation.insert_at_beginning("gather ingredients")
 
 print(sushi_preparation.search("roll"))
 print(sushi_preparation.search("ate and left no crumbs"))
 print(sushi_preparation.remove_beginning())
+print(sushi_preparation.remove_at_end())
 
