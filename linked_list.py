@@ -55,6 +55,20 @@ class LinkedList:
         removed_data = temporary_node.next.data
         temporary_node.next = None
         return removed_data
+    
+    def remove_at(self,data):
+        if not self.head:
+            return None
+        if self.head.data == data:
+            return self.remove_beginning()
+        temporary_node = self.head
+        while temporary_node.next:
+            if temporary_node.next.data == data:
+                removed_data = temporary_node.next.data
+                temporary_node.next = temporary_node.next.next
+                return removed_data
+            temporary_node = temporary_node.next
+        return None
 
 sushi_preparation = LinkedList()
 sushi_preparation.insert_at_end("prepare")
@@ -67,4 +81,6 @@ print(sushi_preparation.search("roll"))
 print(sushi_preparation.search("ate and left no crumbs"))
 print(sushi_preparation.remove_beginning())
 print(sushi_preparation.remove_at_end())
+print(sushi_preparation.remove_at("assemble"))
+print(sushi_preparation.remove_at("jalapeño"))
 
