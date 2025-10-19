@@ -36,7 +36,7 @@ class LinkedList:
         return False
     
     def remove_beginning(self):
-        if self.head:
+        if not self.head:
             return None
         removed_data = self.head.data
         self.head = self.head.next
