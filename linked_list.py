@@ -35,6 +35,13 @@ class LinkedList:
                 current_node = current_node.next
         return False
     
+    def remove_beginning(self):
+        if self.head:
+            return None
+        removed_data = self.head.data
+        self.head = self.head.next
+        return removed_data
+    
 
 sushi_preparation = LinkedList()
 sushi_preparation.insert_at_end("prepare")
@@ -44,4 +51,5 @@ sushi_preparation.insert_at_beginning("gather ingredients")
 
 print(sushi_preparation.search("roll"))
 print(sushi_preparation.search("ate and left no crumbs"))
+print(sushi_preparation.remove_beginning())
 
